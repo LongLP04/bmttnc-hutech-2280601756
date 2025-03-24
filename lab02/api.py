@@ -25,33 +25,33 @@ def caesar_decrypt():
     decrypted_text = caesar_cipher.decrypt_text(cipher_text, key)
     return jsonify({'decrypted_message': decrypted_text})
 
-# #Playfair Cipher
+#Playfair Cipher
 playfair_cipher = PlayFairCipher()
 
 @app.route('/api/playfair/creatematrix', methods=['POST'])
 def playfair_creatematrix():
-    data = request.json
-    key = data['key']
-    playfair_matrix = playfair_cipher.create_playfair_matrix(key)
-    return jsonify({"playfair_matrix": playfair_matrix})
+        data = request.json
+        key = data['key']
+        playfair_matrix = playfair_cipher.create_playfair_matrix(key)
+        return jsonify({"playfair_matrix": playfair_matrix})
 
 @app.route('/api/playfair/encrypt', methods=['POST'])
 def playfair_encrypt():
-    data = request.json
-    plain_text = data['plain_text']
-    key = data['key']
-    playfair_matrix = playfair_cipher.create_playfair_matrix(key)
-    encrypted_text = playfair_cipher.playfair_cipher(plain_text, playfair_matrix)
-    return jsonify({'encrypted_text': encrypted_text})
+        data = request.json
+        plain_text = data['plain_text']
+        key = data['key']
+        playfair_matrix = playfair_cipher.create_playfair_matrix(key)
+        encrypted_text = playfair_cipher.playfair_cipher(plain_text, playfair_matrix)
+        return jsonify({'encrypted_text': encrypted_text})
 
 @app.route('/api/playfair/decrypt', methods=['POST'])
 def playfair_decrypt():
-    data = request.json
-    cipher_text = data['cipher_text']
-    key = data['key']
-    playfair_matrix = playfair_cipher.create_playfair_matrix(key)
-    decrypted_text = playfair_cipher.playfair_decipher(cipher_text, playfair_matrix)
-    return jsonify({'decrypted_text': decrypted_text})
+        data = request.json
+        cipher_text = data['cipher_text']
+        key = data['key']
+        playfair_matrix = playfair_cipher.create_playfair_matrix(key)
+        decrypted_text = playfair_cipher.playfair_decipher(cipher_text, playfair_matrix)
+        return jsonify({'decrypted_text': decrypted_text})
 
 # #Railfence Cipher
 railfence_cipher = RailFenceCipher()
